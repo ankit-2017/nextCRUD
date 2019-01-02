@@ -6,8 +6,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { connect } from "react-redux";
 import {insert_data} from '../Redux/actions'
-
-
+import { nextConnect } from "../Redux/store";
 
 const validationSchema = Yup.object().shape({
   username: Yup.string()
@@ -27,19 +26,23 @@ const initialValues = {
 } 
 
 class Home extends Component{
-    static async getInitialProps({ store, isServer, pathname, query }) {
+    static async getInitialProps({ store, req, isServer, pathname, query }) {
+      if(req){
         await store.dispatch(insert_data())
         const user = await store.getState().home_reducer.user;
         console.log('store', JSON.stringify(user));
-        return {user1: user}
-      }
-      componentDidMount(){
-        console.log('this.props', this.props);
-        this.props.dispatch(insert_data());
-      }
-      
+        return {initialState: await store.getState()}
+      }else{
+        await store.dispatch(insert_data());
+      } 
+    }
+      // componentDidMount(){
+      //   console.log('this.props', this.props);
+        
+      // }
+
     render(){
-        console.log('async data', this.props.user1);
+        console.log('async data', this.props.user);
         return(
             <div>
                 <Head title="Home" />
@@ -96,8 +99,11 @@ class Home extends Component{
                     </div>
                 )}
                 />
+                <Link href="/about">
+                  <a>About page</a>
+                </Link>
                 <div>
-                  {this.props.user1? this.props.user1.map((data, i)=>{
+                  {this.props.user? this.props.user.map((data, i)=>{
                     return <li key={i} >{data.name}</li>
                   }): null}
                 </div>
@@ -112,5 +118,5 @@ function mapStateToProps(state) {
     }
 }
 
-
-export default connect(mapStateToProps, null)(Home)
+export default connect(mapStateToProps)(Home)
+// export default nextConnect(state=>state)(Home)
