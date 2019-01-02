@@ -6,7 +6,6 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { connect } from "react-redux";
 import {insert_data} from '../Redux/actions'
-import { nextConnect } from "../Redux/store";
 
 const validationSchema = Yup.object().shape({
   username: Yup.string()
@@ -29,17 +28,13 @@ class Home extends Component{
     static async getInitialProps({ store, req, isServer, pathname, query }) {
       if(req){
         await store.dispatch(insert_data())
-        const user = await store.getState().home_reducer.user;
-        console.log('store', JSON.stringify(user));
-        return {initialState: await store.getState()}
+        // const user = await store.getState().home_reducer.user;
+        // console.log('store', JSON.stringify(user));
+        return {}
       }else{
-        await store.dispatch(insert_data());
+       store.dispatch(insert_data());
       } 
     }
-      // componentDidMount(){
-      //   console.log('this.props', this.props);
-        
-      // }
 
     render(){
         console.log('async data', this.props.user);

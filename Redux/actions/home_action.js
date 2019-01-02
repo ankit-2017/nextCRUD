@@ -9,7 +9,7 @@ export const insert_data = () => async dispatch => {
     const response = await axios.get(Url)
     // console.log('response', response);
     if(response){
-        toastr.success('data fetched successfully');
+        toastr.success('','data fetched successfully');
     }
        return dispatch({
             type: INSERT_DATA,

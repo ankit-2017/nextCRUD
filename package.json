@@ -9,7 +9,6 @@
     "axios": "^0.18.0",
     "formik": "^1.4.1",
     "next": "^7.0.2",
-    "next-connect-redux": "^0.1.5",
     "next-redux-wrapper": "^2.1.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",

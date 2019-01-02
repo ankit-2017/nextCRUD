@@ -9,13 +9,12 @@ import { makeStore } from "../Redux/store";
 
 
 class MainApp extends App{
-    static getInitialProps({Component, ctx}) {
-        const pageProps = Component.getInitialProps ? Component.getInitialProps(ctx) : {};
+    static async getInitialProps({Component, ctx}) {
+        const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
         return {pageProps};
-
     }
+
     render() {
-        // console.log('store in app', this.props.store.getState());
         const {Component, pageProps, store} = this.props;
         return (
             <Container>
