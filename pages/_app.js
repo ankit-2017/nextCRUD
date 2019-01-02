@@ -5,6 +5,7 @@ import thunk  from 'redux-thunk'
 import App, {Container} from "next/app";
 import withRedux from "next-redux-wrapper";
 import RootReducer from '../Redux/reducers'
+import { logger } from "redux-logger";
 
 const makeStore = () => {
     return createStore(RootReducer, applyMiddleware(thunk));
@@ -12,18 +13,12 @@ const makeStore = () => {
 
 class MainApp extends App{
     static getInitialProps({Component, ctx}) {
-        console.log('ctx', ctx);
-        console.log('component', Component);
-        // // we can dispatch from here too
-        // ctx.store.dispatch({type: 'FOO', payload: 'foo'});
-
         const pageProps = Component.getInitialProps ? Component.getInitialProps(ctx) : {};
-
         return {pageProps};
 
     }
     render() {
-        // console.log('this.props in app.js', this.props);
+        // console.log('store in app', this.props.store.getState());
         const {Component, pageProps, store} = this.props;
         return (
             <Container>
