@@ -406,20 +406,20 @@ function (_App) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_4__["Container"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 28
+          lineNumber: 29
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_2__["Provider"], {
         store: store,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 29
+          lineNumber: 30
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, _extends({}, pageProps, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 30
+          lineNumber: 31
         },
         __self: this
       }))));
@@ -429,9 +429,10 @@ function (_App) {
     value: function getInitialProps(_ref) {
       var Component = _ref.Component,
           ctx = _ref.ctx;
-      // console.log('hello in app.js', ctx);
-      // // we can dispatch from here too
+      console.log('ctx', ctx);
+      console.log('component', Component); // // we can dispatch from here too
       // ctx.store.dispatch({type: 'FOO', payload: 'foo'});
+
       var pageProps = Component.getInitialProps ? Component.getInitialProps(ctx) : {};
       return {
         pageProps: pageProps

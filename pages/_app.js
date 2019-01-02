@@ -12,7 +12,8 @@ const makeStore = () => {
 
 class MainApp extends App{
     static getInitialProps({Component, ctx}) {
-        // console.log('hello in app.js', ctx);
+        console.log('ctx', ctx);
+        console.log('component', Component);
         // // we can dispatch from here too
         // ctx.store.dispatch({type: 'FOO', payload: 'foo'});
 
