@@ -28,17 +28,15 @@ const initialValues = {
 
 class Home extends Component{
     static async getInitialProps({ store, isServer, pathname, query }) {
-        console.log('in home page', store);
-        const data = await store.dispatch(insert_data())
-        return data
-        
+        await store.dispatch(insert_data())
+        return {custom: "ankit"}
       }
       componentDidMount(){
         console.log('this.props', this.props);
-        this.props.insert_data();
+        // this.props.dispatch(insert_data());
       }
     render(){
-        
+        console.log('async data', this.props.custom);
         return(
             <div>
                 <Head title="Home" />
@@ -105,4 +103,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, {insert_data})(Home)
+export default connect(mapStateToProps, null)(Home)

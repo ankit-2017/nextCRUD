@@ -47,10 +47,10 @@ var insert_data = function insert_data() {
               case 3:
                 response = _context.sent;
                 console.log('response', response);
-                dispatch({
+                return _context.abrupt("return", dispatch({
                   type: INSERT_DATA,
                   payload: response
-                });
+                }));
 
               case 6:
               case "end":
@@ -112,7 +112,7 @@ var home_reducer = function home_reducer() {
 
   switch (action.type) {
     case _actions__WEBPACK_IMPORTED_MODULE_1__["INSERT_DATA"]:
-      console.log('in reducer');
+      console.log('payload', action.payload.data);
       return _objectSpread({}, state, {
         user: action.payload.data
       });
@@ -13756,8 +13756,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var makeStore = function makeStore(initialState, options) {
-  return Object(redux__WEBPACK_IMPORTED_MODULE_1__["createStore"])(_Redux_reducers__WEBPACK_IMPORTED_MODULE_6__["default"], initialState, Object(redux__WEBPACK_IMPORTED_MODULE_1__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_3__["default"]));
+var makeStore = function makeStore() {
+  return Object(redux__WEBPACK_IMPORTED_MODULE_1__["createStore"])(_Redux_reducers__WEBPACK_IMPORTED_MODULE_6__["default"], Object(redux__WEBPACK_IMPORTED_MODULE_1__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_3__["default"]));
 };
 
 var MainApp =

@@ -140,10 +140,10 @@ var insert_data = function insert_data() {
               case 3:
                 response = _context.sent;
                 console.log('response', response);
-                dispatch({
+                return _context.abrupt("return", dispatch({
                   type: INSERT_DATA,
                   payload: response
-                });
+                }));
 
               case 6:
               case "end":
@@ -493,29 +493,29 @@ function (_Component) {
   _createClass(Home, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log('this.props', this.props);
-      this.props.insert_data();
+      console.log('this.props', this.props); // this.props.dispatch(insert_data());
     }
   }, {
     key: "render",
     value: function render() {
+      console.log('async data', this.props.custom);
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43
+          lineNumber: 41
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_head__WEBPACK_IMPORTED_MODULE_3__["default"], {
         title: "Home",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44
+          lineNumber: 42
         },
         __self: this
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h3", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 46
+          lineNumber: 44
         },
         __self: this
       }, "Fill user data "), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(formik__WEBPACK_IMPORTED_MODULE_5__["Formik"], {
@@ -531,27 +531,27 @@ function (_Component) {
             className: "container",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 55
+              lineNumber: 53
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(formik__WEBPACK_IMPORTED_MODULE_5__["Form"], {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 56
+              lineNumber: 54
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
             className: "form-group",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 57
+              lineNumber: 55
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
             htmlFor: "username",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 58
+              lineNumber: 56
             },
             __self: this
           }, "Username"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(formik__WEBPACK_IMPORTED_MODULE_5__["Field"], {
@@ -561,7 +561,7 @@ function (_Component) {
             className: "form-control",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 59
+              lineNumber: 57
             },
             __self: this
           }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(formik__WEBPACK_IMPORTED_MODULE_5__["ErrorMessage"], {
@@ -573,21 +573,21 @@ function (_Component) {
             className: "field-error",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 65
+              lineNumber: 63
             },
             __self: this
           })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
             className: "form-group",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 68
+              lineNumber: 66
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
             htmlFor: "Email",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 69
+              lineNumber: 67
             },
             __self: this
           }, "Email"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(formik__WEBPACK_IMPORTED_MODULE_5__["Field"], {
@@ -597,7 +597,7 @@ function (_Component) {
             className: "form-control",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 70
+              lineNumber: 68
             },
             __self: this
           }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(formik__WEBPACK_IMPORTED_MODULE_5__["ErrorMessage"], {
@@ -609,21 +609,21 @@ function (_Component) {
             className: "field-error",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 76
+              lineNumber: 74
             },
             __self: this
           })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
             className: "form-group",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 79
+              lineNumber: 77
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
             htmlFor: "Name",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 80
+              lineNumber: 78
             },
             __self: this
           }, "Name"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(formik__WEBPACK_IMPORTED_MODULE_5__["Field"], {
@@ -633,7 +633,7 @@ function (_Component) {
             className: "form-control",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 81
+              lineNumber: 79
             },
             __self: this
           }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(formik__WEBPACK_IMPORTED_MODULE_5__["ErrorMessage"], {
@@ -645,14 +645,14 @@ function (_Component) {
             className: "field-error",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 87
+              lineNumber: 85
             },
             __self: this
           })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
             className: "form-group",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 91
+              lineNumber: 89
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
@@ -660,14 +660,14 @@ function (_Component) {
             type: "submit",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 92
+              lineNumber: 90
             },
             __self: this
           }, "Submit"))));
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 47
+          lineNumber: 45
         },
         __self: this
       }));
@@ -678,21 +678,21 @@ function (_Component) {
       var _getInitialProps = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref2) {
-        var store, isServer, pathname, query, data;
+        var store, isServer, pathname, query;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 store = _ref2.store, isServer = _ref2.isServer, pathname = _ref2.pathname, query = _ref2.query;
-                console.log('in home page', store);
-                _context.next = 4;
+                _context.next = 3;
                 return store.dispatch(Object(_Redux_actions__WEBPACK_IMPORTED_MODULE_8__["insert_data"])());
 
-              case 4:
-                data = _context.sent;
-                return _context.abrupt("return", data);
+              case 3:
+                return _context.abrupt("return", {
+                  custom: "ankit"
+                });
 
-              case 6:
+              case 4:
               case "end":
                 return _context.stop();
             }
@@ -715,9 +715,7 @@ function mapStateToProps(state) {
   return state;
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_7__["connect"])(mapStateToProps, {
-  insert_data: _Redux_actions__WEBPACK_IMPORTED_MODULE_8__["insert_data"]
-})(Home));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_7__["connect"])(mapStateToProps, null)(Home));
 
 /***/ }),
 

@@ -6,8 +6,8 @@ import App, {Container} from "next/app";
 import withRedux from "next-redux-wrapper";
 import RootReducer from '../Redux/reducers'
 
-const makeStore = (initialState, options) => {
-    return createStore(RootReducer, initialState, applyMiddleware(thunk));
+const makeStore = () => {
+    return createStore(RootReducer, applyMiddleware(thunk));
 };
 
 class MainApp extends App{
