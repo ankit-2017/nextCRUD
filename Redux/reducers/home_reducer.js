@@ -1,13 +1,13 @@
 import React from 'react'
-import {INSERT_DATA} from '../actions'
+import {GET_USERS} from '../actions'
 
 export const home_reducer = (state= {}, action) =>{
     switch (action.type) {
-        case INSERT_DATA :
-            // console.log('payload', action.payload.data);
+        case GET_USERS :
+            console.log('payload', action.payload);
             return {
                 ...state,
-                user: action.payload.data
+                user: action.payload
             }
             break;
     

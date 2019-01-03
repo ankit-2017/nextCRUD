@@ -3,38 +3,25 @@ import Link from 'next/link'
 import Head from '../components/head'
 // import Nav from './nav'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import { connect } from "react-redux";
-import {insert_data} from '../Redux/actions'
-
-const validationSchema = Yup.object().shape({
-  username: Yup.string()
-            .min(4, 'must be longer than 4 character')
-            .required('username is required'),
-  Email : Yup.string()
-          .email('invalid email')
-          .required('Email is required'),
-  Name : Yup.string()
-          .required('Name is required')
-})
-
-const initialValues = {
-  username: '',
-  Email: '',
-  Name: ''
-} 
+import {get_users, insert_data } from '../Redux/actions'
+import {validationSchema, initialValues} from '../helpers/validation' 
 
 class Home extends Component{
     static async getInitialProps({ store, req, isServer, pathname, query }) {
       if(req){
-        await store.dispatch(insert_data())
+        await store.dispatch(get_users())
         // const user = await store.getState().home_reducer.user;
         // console.log('store', JSON.stringify(user));
         return {}
       }else{
-       store.dispatch(insert_data());
+       store.dispatch(get_users());
       } 
     }
+
+    // componentDidMount(){
+    //     this.props.dispatch(get_users());
+    // }
 
     render(){
         console.log('async data', this.props.user);
@@ -46,8 +33,10 @@ class Home extends Component{
                 <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
-                onSubmit = {values =>{
+                onSubmit = {(values, {resetForm}) =>{
                     console.log('all values', values);
+                    this.props.dispatch(insert_data(values))
+                    resetForm();
                 }}
                 
                 render = {({errors, touched}) =>(
@@ -95,12 +84,23 @@ class Home extends Component{
                 )}
                 />
                 <Link href="/about">
-                  <a>About page</a>
+                  <a>go to About page</a>
                 </Link>
                 <div>
-                  {this.props.user? this.props.user.map((data, i)=>{
-                    return <li key={i} >{data.name}</li>
-                  }): null}
+                  {this.props.user?
+                  <table className="table">
+                  <caption>List of users</caption>
+                  {this.props.user.data.map((data, i)=>{
+                    return <tbody key={i}>
+                            <tr>
+                                <td>{data.username}</td>
+                                <td>{data.email}</td>
+                                <td>{data.name}</td>
+                            </tr>
+                    </tbody>
+                  })}
+                  </table>
+                    : null}
                 </div>
 
             </div> 
@@ -114,4 +114,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(Home)
-// export default nextConnect(state=>state)(Home)

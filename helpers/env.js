@@ -7,7 +7,7 @@ let env = {  }
 switch (appEnvironment.env) {
 	case "local":
 		env = {
-			apiUrl: 'http://localhost:5005'
+			apiUrl: 'http://localhost:5000'
 		}
 		break;
 	
