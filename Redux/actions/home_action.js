@@ -18,7 +18,7 @@ export const get_users = () => {
                     type: GET_USERS,
                     payload: response
                 })
-                toastr.success('users fetched successfully');
+                // toastr.success('users fetched successfully');
             }
         })
         .catch(error =>{

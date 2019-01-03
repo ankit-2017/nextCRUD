@@ -33,9 +33,10 @@ class Home extends Component{
                 <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
-                onSubmit = {(values, {resetForm}) =>{
+                onSubmit = { async (values, {resetForm}) =>{
                     console.log('all values', values);
-                    this.props.dispatch(insert_data(values))
+                    await this.props.dispatch(insert_data(values))
+                    await this.props.dispatch(get_users());
                     resetForm();
                 }}
                 
