@@ -19,7 +19,7 @@ class Home extends Component{
     constructor(props){
         super(props)
     }
-    
+
     handleDeleteUser = async (id) =>{
         await this.props.dispatch(crudActions.deleteUser(id))
         await this.props.dispatch( crudActions.get_users());
@@ -86,9 +86,7 @@ class Home extends Component{
                     </div>
                 )}
                 />
-                <Link href="/about">
-                  <a>go to About page</a>
-                </Link>
+                
                 <div>
                   {this.props.user?
                   <table className="table">
