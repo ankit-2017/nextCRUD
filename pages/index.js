@@ -4,24 +4,26 @@ import Head from '../components/head'
 // import Nav from './nav'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { connect } from "react-redux";
-import {get_users, insert_data } from '../Redux/actions'
+import * as crudActions from '../Redux/actions'
 import {validationSchema, initialValues} from '../helpers/validation' 
 
 class Home extends Component{
     static async getInitialProps({ store, req, isServer, pathname, query }) {
       if(req){
-        await store.dispatch(get_users())
-        // const user = await store.getState().home_reducer.user;
-        // console.log('store', JSON.stringify(user));
+        await store.dispatch(crudActions.get_users())
         return {}
       }else{
-       store.dispatch(get_users());
+       store.dispatch(crudActions.get_users());
       } 
     }
-
-    // componentDidMount(){
-    //     this.props.dispatch(get_users());
-    // }
+    constructor(props){
+        super(props)
+    }
+    
+    handleDeleteUser = async (id) =>{
+        await this.props.dispatch(crudActions.deleteUser(id))
+        await this.props.dispatch( crudActions.get_users());
+    }
 
     render(){
         console.log('async data', this.props.user);
@@ -35,8 +37,8 @@ class Home extends Component{
                 validationSchema={validationSchema}
                 onSubmit = { async (values, {resetForm}) =>{
                     console.log('all values', values);
-                    await this.props.dispatch(insert_data(values))
-                    await this.props.dispatch(get_users());
+                    await this.props.dispatch( crudActions.insert_data(values))
+                    await this.props.dispatch( crudActions.get_users());
                     resetForm();
                 }}
                 
@@ -97,6 +99,16 @@ class Home extends Component{
                                 <td>{data.username}</td>
                                 <td>{data.email}</td>
                                 <td>{data.name}</td>
+                                <td>
+                                    <Link href={{pathname: "/editData", query: {id: data._id} }}>
+                                        <a className="btn btn-link" >Edit</a>
+                                    </Link>
+                                    <button 
+                                    type="button" 
+                                    className="btn btn-danger"
+                                    onClick={()=>{this.handleDeleteUser(data._id)}}
+                                    >Delete</button>
+                                </td>
                             </tr>
                     </tbody>
                   })}

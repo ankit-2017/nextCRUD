@@ -21,3 +21,31 @@ export const insertData = (args) =>{
     })
 }
 
+export const getUserData = (id) =>{
+    const Url = `${env.apiUrl}/api/v1/getUserData`
+    return axios.post(Url, {
+        id
+    }).then(response =>{
+        return response.data
+    })
+}
+
+export const updateUserData = (args, id) =>{
+    const Url = `${env.apiUrl}/api/v1/updateUserData`
+    return axios.post(Url, {
+        data: args,
+        id
+    }).then(response =>{
+        return response.data
+    })
+}
+
+export const deleteUser = (id) =>{
+    const Url = `${env.apiUrl}/api/v1/deleteUser`
+    return axios.post(Url, {
+        id
+    }).then(response =>{
+        return response.data
+    })
+}
+

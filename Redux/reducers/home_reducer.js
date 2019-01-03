@@ -9,7 +9,6 @@ export const home_reducer = (state= {}, action) =>{
                 ...state,
                 user: action.payload
             }
-            break;
     
         default:
             return state
